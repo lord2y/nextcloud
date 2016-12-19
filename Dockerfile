@@ -54,6 +54,7 @@ RUN curl -fsSL -o nextcloud.tar.bz2 \
 
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
+RUN apt-get clean
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["php-fpm"]

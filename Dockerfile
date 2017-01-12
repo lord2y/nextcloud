@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
   libpng12-dev \
   libpq-dev \
   libxml2-dev \
+  git \
   && rm -rf /var/lib/apt/lists/*
 
 # https://docs.nextcloud.com/server/9/admin_manual/installation/source_installation.html
@@ -41,7 +42,8 @@ RUN set -ex \
 RUN git clone https://github.com/php-memcached-dev/php-memcached /usr/src/php/ext/memcached \
  && cd /usr/src/php/ext/memcached && git checkout -b php7 origin/php7 \
  && docker-php-ext-configure memcached \
- && docker-php-ext-install memcached 
+ && docker-php-ext-install memcached \
+ && rm -fr /usr/src/php/ext/memcached
 
 ENV NEXTCLOUD_VERSION 11.0.0
 VOLUME /var/www/html

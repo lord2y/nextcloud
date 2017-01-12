@@ -32,10 +32,16 @@ RUN { \
 
 # PECL extensions
 RUN set -ex \
- && pecl install APCu-4.0.10 \
- && pecl install memcached-2.2.0 \
- && pecl install redis-2.2.8 \
- && docker-php-ext-enable apcu redis memcached
+ && pecl install APCu-5.1.7 \
+ && pecl install redis-3.1.0 \
+ && docker-php-ext-enable apcu redis
+
+# Memcached
+
+RUN git clone https://github.com/php-memcached-dev/php-memcached /usr/src/php/ext/memcached \
+ && cd /usr/src/php/ext/memcached && git checkout -b php7 origin/php7 \
+ && docker-php-ext-configure memcached \
+ && docker-php-ext-install memcached 
 
 ENV NEXTCLOUD_VERSION 11.0.0
 VOLUME /var/www/html

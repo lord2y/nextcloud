@@ -45,7 +45,7 @@ RUN git clone https://github.com/php-memcached-dev/php-memcached /usr/src/php/ex
  && docker-php-ext-install memcached \
  && rm -fr /usr/src/php/ext/memcached
 
-ENV NEXTCLOUD_VERSION 11.0.0
+ENV NEXTCLOUD_VERSION 11.0.2
 VOLUME /var/www/html
 
 RUN curl -fsSL -o nextcloud.tar.bz2 \

@@ -1,2 +1,2 @@
 # nextcloud
-Dockerfile for nextcloud 11.0.0
+Dockerfile for nextcloud 12.0.2
